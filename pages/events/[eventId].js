@@ -4,6 +4,8 @@ import { getEventById } from "../../dummyData";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
+import EventAlert from "../../components/ui/error-alert/error-alert";
+import Button from "../../components/ui/button";
 
 const individualEvent = () => {
   // const
@@ -12,7 +14,16 @@ const individualEvent = () => {
   const event = getEventById(eventId);
 
   if (!event) {
-    return <p>No Event Found</p>;
+    return (
+      <>
+        <EventAlert>
+          <p>No Event Found</p>
+        </EventAlert>
+        <div className="center">
+          <Button link="/events">Show All Events</Button>
+        </div>
+      </>
+    );
   }
 
   return (

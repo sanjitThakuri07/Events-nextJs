@@ -2,14 +2,16 @@ import React from "react";
 import Link from "next/link";
 import classes from "./button.module.css";
 
-const button = ({ link, type, children }) => {
-  return type !== "link" ? (
+const Button = ({ link, type, children, onClick }) => {
+  return !link ? (
+    <button className={classes.btn} onClick={onClick}>
+      {children}
+    </button>
+  ) : (
     <Link href={link} className={classes.btn}>
       {children}
     </Link>
-  ) : (
-    <button className={classes.btn}>{children}</button>
   );
 };
 
-export default button;
+export default Button;
